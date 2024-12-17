@@ -30,7 +30,6 @@ public class MemberTableModel extends AbstractTableModel {
 
 	@Override
 	public int getColumnCount() {
-		// TODO Auto-generated method stub
 		return COL_NAMES.length;
 	}
 

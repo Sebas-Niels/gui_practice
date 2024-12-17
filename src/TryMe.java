@@ -1,10 +1,12 @@
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 import ctrl.MemberCtrl;
 import ctrl.RegisterDogCtrl;
 import gui.DogListCellRenderer;
 import gui.DogView;
+import gui.MemberRegisterView;
 import gui.MemberView;
 //import gui.DogView;
 import model.Dog;
@@ -14,12 +16,12 @@ public class TryMe {
 	private static RegisterDogCtrl rdc = new RegisterDogCtrl();
 	private static MemberCtrl mc = new MemberCtrl();
 	public static void main(String[] args) {
-		Member m = mc.createMember("Joe", "joe@joe", "12121212");
+		Member m1 = mc.createMember("Joe", "joe@joe", "12121212");
 		rdc.findByEmail("joe@joe");
 		Dog fido = rdc.registerDog("Fido", LocalDate.now().getYear());
 		//DogView dv = new DogView(fido, rdc);
 		//dv.setVisible(true);
-		System.out.println(m);
+		System.out.println(m1);
 		
 		
 		Member m2 = mc.createMember("testName", "test@email.com", "testPhone");
@@ -33,10 +35,17 @@ public class TryMe {
 //		
 //		System.out.println(fido.getName());
 		
-		MemberView memberFrame = new MemberView(m);
-		memberFrame.setVisible(true);
+//		MemberView memberFrame = new MemberView(m1);
+//		memberFrame.setVisible(true);
+//		
+//		DogListCellRenderer dcr = new DogListCellRenderer();
 		
-		DogListCellRenderer dcr = new DogListCellRenderer();
+		
+		ArrayList<Member> members = new ArrayList<>();
+		members.add(m1);
+		members.add(m2);
+		MemberRegisterView mrv = new MemberRegisterView(members);
+		mrv.setVisible(true);
 		
 		
 	}

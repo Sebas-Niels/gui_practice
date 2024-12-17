@@ -53,8 +53,8 @@ public class MemberRegisterView extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MemberRegisterView(MemberTableModel mtm) {
-		this.mtm = mtm;
+	public MemberRegisterView(ArrayList<Member> members) {
+		this.members = members;
 		initGUI();
 		initMTM();
 	}
@@ -103,6 +103,8 @@ public class MemberRegisterView extends JFrame {
 	
 	public void initMTM() {
 		mtm = new MemberTableModel(members);
+//		Member testM = new Member("t", "t", "t");
+//		mtm.add(testM);
 		tblMembers.setModel(mtm);
 	}
 	
