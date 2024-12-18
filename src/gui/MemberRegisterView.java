@@ -32,7 +32,7 @@ public class MemberRegisterView extends JFrame {
 	private final JTable tblMembers = new JTable();
 	private final JButton btnSelect = new JButton("Select");
 	private final JButton btnAddMember = new JButton("Add Member");
-	ArrayList<Member> members = new ArrayList<>();
+	private ArrayList<Member> members = new ArrayList<>();
 
 	/**
 	 * Launch the application.
@@ -120,8 +120,11 @@ public class MemberRegisterView extends JFrame {
 	}
 	
 	private void addMemberClicked() {
-		members.add(new Member("ClickTest", "ClickTest", "ClickTest"));
-		mtm.setData(members);
+		MemberView mv = new MemberView(null);
+		mv.setVisible(true);
+		
+//		members.add(new Member("ClickTest", "ClickTest", "ClickTest"));
+//		mtm.setData(members);
 	}
 
 }

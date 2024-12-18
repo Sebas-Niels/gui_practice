@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ctrl.MemberCtrl;
 import model.Dog;
 import model.Member;
 
@@ -52,6 +53,7 @@ public class MemberView extends JFrame {
 	private final JButton btnNewButton = new JButton("New button");
 	private final JButton btnNewButton_1 = new JButton("New button");
 	private final JButton btnNewButton_2 = new JButton("New button");
+	private MemberCtrl memberCtrl;
 
 	/**
 	 * Launch the application.
@@ -77,6 +79,7 @@ public class MemberView extends JFrame {
 		phoneTextField.setColumns(10);
 		emailTextField.setColumns(10);
 		nameTextField.setColumns(10);
+		memberCtrl = new MemberCtrl();
 		DogListCellRenderer dlcr = new DogListCellRenderer();
 		
 		dogList.setCellRenderer(dlcr);
@@ -150,6 +153,11 @@ public class MemberView extends JFrame {
 		
 		contentPane.add(southPanel, BorderLayout.SOUTH);
 		southPanel.setLayout(new FlowLayout(FlowLayout.RIGHT, 5, 5));
+		updateButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				createMember();
+			}
+		});
 		updateButton.setHorizontalAlignment(SwingConstants.RIGHT);
 		southPanel.add(updateButton);
 		cancelButton.setHorizontalAlignment(SwingConstants.RIGHT);
@@ -178,16 +186,26 @@ public class MemberView extends JFrame {
 	}
 	
 	public void setMemberTextLabels(Member member) {
-		nameTextField.setText(member.getName());
-		emailTextField.setText(member.getEmail());
-		phoneTextField.setText(member.getPhone());
+		if(member != null) {
+			nameTextField.setText(member.getName());
+			emailTextField.setText(member.getEmail());
+			phoneTextField.setText(member.getPhone());
+		}
+		
 	}
 	
 	public void displayDogs() {
 		ArrayList<Dog> dogs = new ArrayList<>();
-		dogs = member.getDogs();
+		if(member != null) {
+			dogs = member.getDogs();
+		}
 		dogListModel.addAll(dogs);
 		dogList.setModel(dogListModel);
+	}
+	
+	public void createMember() {
+		memberCtrl.createMember(nameTextField.getText(), emailTextField.getText(), phoneTextField.getText());
+		
 	}
 
 }
